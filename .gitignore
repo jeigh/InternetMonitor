@@ -1,0 +1,14 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+*.suo
+**\Debug\*
+**\packages\*
+*.log
+**\connectionStrings.config
+/src/InternetMonitor.Database/InternetMonitor.Database.publish.xml
+/src/InternetMonitor.Database/InternetMonitor.Database.sqlproj.user
+*.vspscc
+*.user
+*.vssscc

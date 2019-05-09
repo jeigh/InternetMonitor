@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="InternetMonitorModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="GatewayRestart">
+          <Key>
+            <PropertyRef Name="GatewayRestartId" />
+          </Key>
+          <Property Name="GatewayRestartId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedOn" Type="smalldatetime" />
+          <Property Name="SpeedUp" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="SpeedDown" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="Ipv4Address" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityType Name="WanSpeed">
+          <Key>
+            <PropertyRef Name="WanSpeedId" />
+          </Key>
+          <Property Name="WanSpeedId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SpeedUp" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SpeedDown" Type="decimal" Precision="18" Scale="0" Nullable="false" />
+          <Property Name="SpeedTime" Type="smalldatetime" Nullable="false" />
+          <Property Name="Ipv4Address" Type="varchar" MaxLength="15" />
+        </EntityType>
+        <EntityContainer Name="InternetMonitorModelStoreContainer">
+          <EntitySet Name="GatewayRestart" EntityType="Self.GatewayRestart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WanSpeed" EntityType="Self.WanSpeed" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InternetMonitorModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="InternetMonitorContext" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="GatewayRestarts" EntityType="InternetMonitorModel.GatewayRestart" />
+          <EntitySet Name="WanSpeeds" EntityType="InternetMonitorModel.WanSpeed" />
+        </EntityContainer>
+        <EntityType Name="GatewayRestart">
+          <Key>
+            <PropertyRef Name="GatewayRestartId" />
+          </Key>
+          <Property Name="GatewayRestartId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Precision="0" />
+          <Property Name="SpeedUp" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SpeedDown" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Ipv4Address" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="WanSpeed">
+          <Key>
+            <PropertyRef Name="WanSpeedId" />
+          </Key>
+          <Property Name="WanSpeedId" Type="Guid" Nullable="false" />
+          <Property Name="SpeedUp" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SpeedDown" Type="Decimal" Nullable="false" Precision="18" Scale="0" />
+          <Property Name="SpeedTime" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Ipv4Address" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InternetMonitorModelStoreContainer" CdmEntityContainer="InternetMonitorContext">
+          <EntitySetMapping Name="GatewayRestarts">
+            <EntityTypeMapping TypeName="InternetMonitorModel.GatewayRestart">
+              <MappingFragment StoreEntitySet="GatewayRestart">
+                <ScalarProperty Name="Ipv4Address" ColumnName="Ipv4Address" />
+                <ScalarProperty Name="SpeedDown" ColumnName="SpeedDown" />
+                <ScalarProperty Name="SpeedUp" ColumnName="SpeedUp" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="GatewayRestartId" ColumnName="GatewayRestartId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WanSpeeds">
+            <EntityTypeMapping TypeName="InternetMonitorModel.WanSpeed">
+              <MappingFragment StoreEntitySet="WanSpeed">
+                <ScalarProperty Name="Ipv4Address" ColumnName="Ipv4Address" />
+                <ScalarProperty Name="SpeedTime" ColumnName="SpeedTime" />
+                <ScalarProperty Name="SpeedDown" ColumnName="SpeedDown" />
+                <ScalarProperty Name="SpeedUp" ColumnName="SpeedUp" />
+                <ScalarProperty Name="WanSpeedId" ColumnName="WanSpeedId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
